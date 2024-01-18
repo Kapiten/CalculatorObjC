@@ -17,6 +17,8 @@
 		843E446F2B565B4800AD41FD /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 843E446E2B565B4800AD41FD /* main.m */; };
 		843E44792B565B4800AD41FD /* CalculatorObjCTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 843E44782B565B4800AD41FD /* CalculatorObjCTests.m */; };
 		843E44842B565B4800AD41FD /* CalculatorObjCUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 843E44832B565B4800AD41FD /* CalculatorObjCUITests.m */; };
+		844D76482B590F1B0071B761 /* DefaultHistory.m in Sources */ = {isa = PBXBuildFile; fileRef = 844D76472B590F1B0071B761 /* DefaultHistory.m */; };
+		844D76512B592A790071B761 /* HistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 844D76502B592A790071B761 /* HistoryViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +58,10 @@
 		843E447F2B565B4800AD41FD /* CalculatorObjCUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CalculatorObjCUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		843E44832B565B4800AD41FD /* CalculatorObjCUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CalculatorObjCUITests.m; sourceTree = "<group>"; };
 		843E44852B565B4800AD41FD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		844D76462B590DFF0071B761 /* DefaultHistory.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DefaultHistory.h; sourceTree = "<group>"; };
+		844D76472B590F1B0071B761 /* DefaultHistory.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DefaultHistory.m; sourceTree = "<group>"; };
+		844D764F2B592A3E0071B761 /* HistoryViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HistoryViewController.h; sourceTree = "<group>"; };
+		844D76502B592A790071B761 /* HistoryViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HistoryViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,6 +124,10 @@
 				843E446D2B565B4800AD41FD /* Info.plist */,
 				843E446E2B565B4800AD41FD /* main.m */,
 				843E44652B565B4700AD41FD /* CalculatorObjC.xcdatamodeld */,
+				844D76462B590DFF0071B761 /* DefaultHistory.h */,
+				844D76472B590F1B0071B761 /* DefaultHistory.m */,
+				844D764F2B592A3E0071B761 /* HistoryViewController.h */,
+				844D76502B592A790071B761 /* HistoryViewController.m */,
 			);
 			path = CalculatorObjC;
 			sourceTree = "<group>";
@@ -269,10 +279,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				844D76482B590F1B0071B761 /* DefaultHistory.m in Sources */,
 				843E446F2B565B4800AD41FD /* main.m in Sources */,
 				843E44612B565B4700AD41FD /* ViewController.m in Sources */,
 				843E445B2B565B4700AD41FD /* AppDelegate.m in Sources */,
 				843E445E2B565B4700AD41FD /* SceneDelegate.m in Sources */,
+				844D76512B592A790071B761 /* HistoryViewController.m in Sources */,
 				843E44672B565B4700AD41FD /* CalculatorObjC.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

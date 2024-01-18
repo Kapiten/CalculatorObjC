@@ -6,6 +6,7 @@
 //
 
 #import "ViewController.h"
+#import "DefaultHistory.h"
 
 @interface ViewController ()
 @property (weak, nonatomic) IBOutlet UILabel *lblAnswer;
@@ -67,7 +68,9 @@ BOOL dotted = false;
 
 - (IBAction)tapClear:(UIButton *)sender {[self clearAll];}
 
-- (IBAction)tapBackspace:(UIButton *)sender {if(standBy){return;}[_txtExpression setText:[_txtExpression.text substringToIndex:_txtExpression.text.length-1]];}
+- (IBAction)tapBackspace:(UIButton *)sender {if(standBy){return;}[_txtExpression setText:[_txtExpression.text substringToIndex:_txtExpression.text.length-1]];
+    if ([_txtExpression.text isEqualToString:@""]) {[self clearAll];}
+}
 
 - (IBAction)tapEqual:(UIButton *)sender {
     NSString *currVal = @"";
@@ -78,11 +81,8 @@ BOOL dotted = false;
     NSArray *arrNums = [_txtExpression.text componentsSeparatedByCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"+-÷×"]];
     NSMutableArray *arrSymsA = [_txtExpression.text componentsSeparatedByCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"1234567890."]].mutableCopy;
     NSMutableArray *arrSyms = [[NSMutableArray alloc] init];
-    for(NSString *aStr in arrSymsA) {
-        if(![aStr isEqualToString:@""]){[arrSyms addObject:aStr];}
-    }
-//    NSLog(@"%@%@", @"ExpressCharsNumbs:", [_txtExpression.text componentsSeparatedByCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"+-÷×"]]);
-//    NSLog(@"%@%@", @"ExpressCharsSyms:", [_txtExpression.text componentsSeparatedByCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"1234567890."]]);
+    for(NSString *aStr in arrSymsA) {if(![aStr isEqualToString:@""]){[arrSyms addObject:aStr];}}
+    
     for(NSString *aNum in arrNums) {
         if([currSym isEqualToString:@""]){currAns=aNum.doubleValue;currSym = ((NSString *)[arrSyms objectAtIndex:symIndx]);symIndx +=1;signAlt=true;}
         else {
@@ -90,10 +90,9 @@ BOOL dotted = false;
             else {
                 if([currSym isEqualToString: @"+"]) {currAns += aNum.doubleValue;}
                 if([currSym isEqualToString: @"-"]) {currAns -= aNum.doubleValue;}
-                if([currSym isEqualToString: @"÷"]) {currAns /= aNum.doubleValue;}
-                if([currSym isEqualToString: @"×"]) {currAns *= aNum.doubleValue;}
+                if([currSym isEqualToString: @"÷"]||[currSym isEqualToString: @"/"]) {currAns /= aNum.doubleValue;}
+                if([currSym isEqualToString: @"×"]||[currSym isEqualToString: @"*"]) {currAns *= aNum.doubleValue;}
             }
-            
         }
         
         signAlt = !signAlt;
@@ -113,7 +112,8 @@ BOOL dotted = false;
     [_lblAnswer setText:[currVal stringByAppendingString: @"="]];
     standBy = true;
         
-    NSLog(@"%@%f", @"Answer:", currVal.doubleValue);
+    DefaultHistory *dh = [[DefaultHistory alloc] init];
+    [dh addItem:[[_txtExpression.text stringByReplacingOccurrencesOfString:@"÷" withString:@"/"] stringByReplacingOccurrencesOfString:@"×" withString:@"*"]];
 }
 
 - (void)clearAll {
@@ -126,6 +126,11 @@ BOOL dotted = false;
     [_txtExpression setText:[_txtExpression.text stringByAppendingString:val]];
     NSRange bottom = NSMakeRange(_txtExpression.text.length -1, 1);
     [_txtExpression scrollRangeToVisible:bottom];
+}
+
+- (void) writeExpression:(NSString*) expression {
+    [_txtExpression setText:expression];
+    [_lblAnswer setText:@"Answer"];
 }
 
 @end

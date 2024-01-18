@@ -9,6 +9,7 @@
 
 @interface ViewController : UIViewController
 
+- (void) writeExpression:(NSString*) expression;
 
 @end
 
